@@ -15,12 +15,12 @@ import javax.swing.JPanel;
 
 public class MySignPanel extends JPanel{
 	private LinkedList<LinkedList<HashMap<String,Integer>>> lines,recycle;
-	private LinkedList<Color> color,colorrecycle;
+	private LinkedList<Color> color,colorrecycle,bgcolor;
 	private LinkedList<BasicStroke> stroke,strokerecycle;
-	Color c1  ;
+	Color c1,c2   ;
 	BasicStroke s1=new BasicStroke(4);
 	public MySignPanel(){
-		setBackground(Color.YELLOW);
+		setBackground(c2=Color.white);
 		MyMouseListener listener = new MyMouseListener();
 		addMouseListener(listener);
 		addMouseMotionListener(listener);		
@@ -35,6 +35,7 @@ public class MySignPanel extends JPanel{
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		setBackground(c2);
 		Graphics2D g2d = (Graphics2D)g;		
 		for(int i=0; i<lines.size(); i++){
 			g2d.setStroke(stroke.get(i));
@@ -51,8 +52,11 @@ public class MySignPanel extends JPanel{
 	public void color(){
 		 c1 = JColorChooser.showDialog(this, "Select a Color", Color.BLUE);
 	}
+	public void bgcolor(){
+		 c2 = JColorChooser.showDialog(this, "Select a Color", Color.BLUE);
+	}
 //	public void stroke(){
-//		 s1 = new BasicStroke(Integer.parseInt(JOptionPane.showInputDialog("請輸入粗細大小")));
+//		 s1 = new BasicStroke(Integer.parseInt(JOptionPane.showInputDialog("嚙請選蕭J嚙褊細大嚙緘")));
 //		 
 //	}
 	public void stroke(int a){

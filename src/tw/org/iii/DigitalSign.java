@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class DigitalSign extends JFrame {
-	private JButton clear, undo, redo, save, open,color,stroke;
+	private JButton clear, undo, redo, save, open,color,stroke,bgcolor;
 	private MySignPanel msp;
 	
 	public DigitalSign(){
@@ -27,11 +27,13 @@ public class DigitalSign extends JFrame {
 		clear = new JButton("Clear"); 
 		undo = new JButton("Undo");
 		color = new JButton("color"); 
+		bgcolor = new JButton("bgcolor"); 
 		//stroke = new JButton("stroke"); 
 		redo = new JButton("Redo");
 		JPanel top = new JPanel(new FlowLayout()); 
 		top.add(clear);top.add(undo); 
 		top.add(redo);top.add(color);
+		top.add(bgcolor);
 		//top.add(stroke);
 		top.add(g);
 		add(top, BorderLayout.NORTH);		
@@ -80,6 +82,13 @@ public class DigitalSign extends JFrame {
 				msp.color();
 			}
 		});
+		bgcolor.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {				
+						msp.bgcolor();
+					}
+				});
 		setSize(640,  480);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
