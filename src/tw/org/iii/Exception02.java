@@ -1,0 +1,34 @@
+package tw.org.iii;
+
+public class Exception02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int a=10,b=0;
+		int[] c={1,2,3,4};
+		try{//裡面可以為空,只要一檢查到錯誤則跳至適合的例外處理(部會執行錯誤之後,直接跳至catch)
+			
+			
+			try{//若前內部catch使用RuntimeException or 父類別 則"之後"子類都無法使用
+				System.out.println(a/b);
+				System.out.println(c[4]);				
+			}catch(Exception ee){//若內部找步道會到外部找catch
+				System.out.println("8787");
+			}
+			
+		}
+		catch(ArithmeticException ce){//ArithmeticException算術例外,catch:例外執行
+			b=1;
+			System.out.println(a/b);
+			
+		}
+		//ArrayIndexOutOfBoundsException,ArithmeticException都為RuntimeException的子類別
+			//子類可以互換,父與子,子必須在父之上,以子例外優先處理
+			
+		catch(RuntimeException ee){//只要是執行錯誤都執行此例外
+			System.out.println("ok");
+		}
+		System.out.println("qq");
+	}
+
+}
