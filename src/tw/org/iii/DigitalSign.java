@@ -21,7 +21,7 @@ public class DigitalSign extends JFrame {
 		setLayout(new BorderLayout());	
 		JComboBox g = new JComboBox();
 		g.setSize(200, 100);
-		g.addItem("��ܲʲ�");
+		g.addItem("選擇粗細");
 		for(int i=1;i<=20;i++){
 		g.addItem(i);}
 		clear = new JButton("Clear"); 
