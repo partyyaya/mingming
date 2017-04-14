@@ -2,22 +2,31 @@ package tw.org.iii;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
-import javax.swing.JOptionPane;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MySignPanel extends JPanel{
 	private LinkedList<LinkedList<HashMap<String,Integer>>> lines,recycle;
 	private LinkedList<Color> color,colorrecycle,bgcolor;
 	private LinkedList<BasicStroke> stroke,strokerecycle;
-	Color c1,c2   ;
+	Color c1,c2;
 	BasicStroke s1=new BasicStroke(4);
 	public MySignPanel(){
 		setBackground(c2=Color.white);
@@ -79,6 +88,49 @@ public class MySignPanel extends JPanel{
 //		color.add(colorrecycle.removeLast());
 //		stroke.add(strokerecycle.removeLast());
 		repaint();
+	}
+//	public void open(){
+//		setOpaque(false);
+//		int w,h;
+//		String currentFile="./dir1";
+//		JFileChooser fc = new JFileChooser(currentFile);
+//		File readFile = new File("");
+//		int option = fc.showOpenDialog(null);
+//		if(option == JFileChooser.APPROVE_OPTION){
+//			readFile = fc.getSelectedFile();}	
+//		Image srcImage;
+//		try {
+//			srcImage = ImageIO.read(readFile);
+//			//抓一下原圖檔的大小
+//			w =srcImage.getWidth(null); h = srcImage.getHeight(null);			
+//			//預設一塊空白區域 可以容納image的size  
+//			BufferedImage bi = new BufferedImage(w, h,
+//						BufferedImage.TYPE_INT_RGB);
+//			JLabel la = new JLabel((new ImageIcon(".\\xxx\\xx.jpg"));		
+//			//將影像寫入上面的區域
+//				
+//			
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}			
+//	}
+	protected void saveFile(){
+		try{
+			Dimension d1 = this.getSize();//Dimension表示尺吋
+			BufferedImage bi = new BufferedImage(d1.width, d1.height,BufferedImage.TYPE_INT_BGR);
+			File saveFile = new File("");
+			String currentFile="./dir1";
+			JFileChooser fc = new JFileChooser(currentFile);
+			int option = fc.showSaveDialog(null);
+			this.printAll(bi.getGraphics());
+			if(option == JFileChooser.APPROVE_OPTION){
+				saveFile = fc.getSelectedFile();
+				//簡單一行  寫入 (目標影像, 格式, 目的地)
+				ImageIO.write(bi, "bmp", saveFile);	
+			}
+		}catch(Exception ee){
+				ee.toString();
+		}	
 	}
 	private class MyMouseListener extends MouseAdapter {
 		@Override

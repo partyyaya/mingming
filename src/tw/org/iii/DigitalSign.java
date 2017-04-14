@@ -6,16 +6,17 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class DigitalSign extends JFrame {
 	private JButton clear, undo, redo, save, open,color,stroke,bgcolor;
-	private MySignPanel msp;
-	
+	private MySignPanel msp;	
 	public DigitalSign(){
 		super("Digital Sign");
 		setLayout(new BorderLayout());	
@@ -28,13 +29,16 @@ public class DigitalSign extends JFrame {
 		undo = new JButton("Undo");
 		color = new JButton("color"); 
 		bgcolor = new JButton("bgcolor"); 
+		save = new JButton("save"); 
+		open=new JButton("open");
 		//stroke = new JButton("stroke"); 
 		redo = new JButton("Redo");
 		JPanel top = new JPanel(new FlowLayout()); 
 		top.add(clear);top.add(undo); 
 		top.add(redo);top.add(color);
 		top.add(bgcolor);
-		//top.add(stroke);
+		//top.add(open);
+		top.add(save);
 		top.add(g);
 		add(top, BorderLayout.NORTH);		
 		msp = new MySignPanel();
@@ -47,6 +51,13 @@ public class DigitalSign extends JFrame {
 				msp.clear();
 			}
 		});
+//		open.addActionListener(new ActionListener() {			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				// TODO Auto-generated method stub
+//				msp.open();
+//			}
+//		});
 		undo.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -66,6 +77,13 @@ public class DigitalSign extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				msp.stroke(g.getSelectedIndex());
+			}
+		});
+		save.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				msp.saveFile();
 			}
 		});
 		redo.addActionListener(new ActionListener() {

@@ -7,32 +7,32 @@ import javax.swing.*;
 public class JCombobox01 {
 
 	JCombobox01() {
-		// «Å§iµøµ¡¤¸¥ó
-		JFrame frame = new JFrame();
-		// ³]©wµøµ¡¼ĞÃD
-		frame.setTitle("Java °ò¥»µøµ¡");
-		// ³]©wµøµ¡¥¬§½®æ¦¡
-		frame.setLayout(null);
-		JComboBox<Color> g = new JComboBox<>();
-		// «Å§iJComboBox
-		JComboBox comebox = new JComboBox();
-		// ¼W¥[¤º®e¨ìcomebox
-		comebox.addItem("A");
-		comebox.addItem("B");
-		comebox.addItem("C");
-		comebox.addItem("D");
-		// ³]©wª«¥ó(X¶b,Y¶b,¼e,°ª)
-		comebox.setBounds(60, 40, 100, 20);
-		// ±Nª«¥ó·s¼W¨ìµøµ¡¤º
-		frame.add(comebox);
+		// å®£å‘Šè¦–çª—å…ƒä»¶
+				JFrame frame = new JFrame();
+				// è¨­å®šè¦–çª—æ¨™é¡Œ
+				frame.setTitle("Java åŸºæœ¬è¦–çª—");
+				// è¨­å®šè¦–çª—å¸ƒå±€æ ¼å¼
+				frame.setLayout(null);
+				
+				// å®£å‘ŠJComboBox
+				JComboBox comebox = new JComboBox();
+				// å¢åŠ å…§å®¹åˆ°comebox
+				comebox.addItem("A");
+				comebox.addItem("B");
+				comebox.addItem("C");
+				comebox.addItem("D");
+				// è¨­å®šç‰©ä»¶(Xè»¸,Yè»¸,å¯¬,é«˜)
+				comebox.setBounds(60, 40, 100, 20);
+				// å°‡ç‰©ä»¶æ–°å¢åˆ°è¦–çª—å…§
+				frame.add(comebox);
 
-		// ³]©wµøµ¡¤j¤p(¼e,°ª)
-		frame.setSize(250, 200);
-		// Åã¥Üµøµ¡
-		frame.setVisible(true);
-	}
+				// è¨­å®šè¦–çª—å¤§å°(å¯¬,é«˜)
+				frame.setSize(250, 200);
+				// é¡¯ç¤ºè¦–çª—
+				frame.setVisible(true);
+			}
 
-	public static void main(String args[]) {
-		new JCombobox01();
-	}
+			public static void main(String args[]) {
+				new JCombobox01();
+			}
 }
